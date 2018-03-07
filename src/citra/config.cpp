@@ -99,6 +99,15 @@ void Config::ReadValues() {
     Settings::values.bg_green = (float)sdl2_config->GetReal("Renderer", "bg_green", 0.0);
     Settings::values.bg_blue = (float)sdl2_config->GetReal("Renderer", "bg_blue", 0.0);
 
+    Settings::values.tex_cache_size = sdl2_config->GetInteger("Enhancements", "tex_cache_size", 100);
+    Settings::values.tex_scale_mode = sdl2_config->GetInteger("Enhancements", "tex_scale_mode", 0);
+    Settings::values.tex_scale_factor = sdl2_config->GetInteger("Enhancements", "tex_scale_factor", 1);
+    Settings::values.tex_scale_depos = sdl2_config->GetBoolean("Enhancements", "tex_scale_depos", false);
+    Settings::values.tex_dump = sdl2_config->GetBoolean("Enhancements", "tex_dump", false);
+    Settings::values.tex_dump_dir = sdl2_config->Get("Enhancements", "tex_dump_dir", "");
+    Settings::values.tex_load = sdl2_config->GetBoolean("Enhancements", "tex_load", false);
+    Settings::values.tex_load_dir = sdl2_config->Get("Enhancements", "tex_load_dir", "");
+    
     // Layout
     Settings::values.layout_option =
         static_cast<Settings::LayoutOption>(sdl2_config->GetInteger("Layout", "layout_option", 0));

@@ -116,6 +116,17 @@ struct Values {
     float bg_green;
     float bg_blue;
 
+    int tex_cache_size;
+
+    int tex_scale_mode;
+    int tex_scale_factor;
+    bool tex_scale_depos;
+
+    bool tex_dump;
+    std::string tex_dump_dir;
+    bool tex_load;
+    std::string tex_load_dir;
+
     std::string log_filter;
 
     // Audio

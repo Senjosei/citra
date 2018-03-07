@@ -103,6 +103,22 @@ bg_red =
 bg_blue =
 bg_green =
 
+# The size of temporary scaled/custom texture
+# Must be in range of 100-500. Higher values use more RAM
+tex_cache_size =
+
+# 0 (default): Nothing, 1: Bicubic, 2: xBRz, 3: Hybrid
+tex_scale_mode =
+
+# 1 (default): Disabled, 2-5/6: Enabled at x times scaling
+tex_scale_factor =
+
+# Texture dumping & Custom texture options and directory
+tex_dump =
+tex_dump_dir =
+tex_load =
+tex_load_dir =
+
 [Layout]
 # Layout for the screen inside the render window.
 # 0 (default): Default Top Bottom Screen, 1: Single Screen Only, 2: Large Screen Small Screen

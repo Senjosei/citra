@@ -19,6 +19,11 @@ ConfigureGraphics::ConfigureGraphics(QWidget* parent)
             &QSpinBox::setEnabled);
 
     ui->layoutBox->setEnabled(!Settings::values.custom_layout);
+
+    ui->tex_cache_size->setEnabled(!Core::System::GetInstance().IsPoweredOn());
+    ui->tex_scale_mode->setEnabled(!Core::System::GetInstance().IsPoweredOn());
+    ui->tex_scale_factor->setEnabled(!Core::System::GetInstance().IsPoweredOn());
+    ui->tex_scale_depos->setEnabled(!Core::System::GetInstance().IsPoweredOn());
 }
 
 ConfigureGraphics::~ConfigureGraphics() {}
@@ -33,6 +38,15 @@ void ConfigureGraphics::setConfiguration() {
     ui->frame_limit->setValue(Settings::values.frame_limit);
     ui->layout_combobox->setCurrentIndex(static_cast<int>(Settings::values.layout_option));
     ui->swap_screen->setChecked(Settings::values.swap_screen);
+
+    ui->tex_cache_size->setValue(Settings::values.tex_cache_size);
+    ui->tex_scale_mode->setCurrentIndex(Settings::values.tex_scale_mode);
+    ui->tex_scale_factor->setValue(Settings::values.tex_scale_factor);
+    ui->tex_scale_depos->setChecked(Settings::values.tex_scale_depos);
+    ui->tex_dump->setChecked(Settings::values.tex_dump);
+    ui->tex_dump_dir->setText(QString::fromStdString(Settings::values.tex_dump_dir));
+    ui->tex_load->setChecked(Settings::values.tex_load);
+    ui->tex_load_dir->setText(QString::fromStdString(Settings::values.tex_load_dir));
 }
 
 void ConfigureGraphics::applyConfiguration() {
@@ -46,6 +60,15 @@ void ConfigureGraphics::applyConfiguration() {
     Settings::values.layout_option =
         static_cast<Settings::LayoutOption>(ui->layout_combobox->currentIndex());
     Settings::values.swap_screen = ui->swap_screen->isChecked();
+
+    Settings::values.tex_cache_size = ui->tex_cache_size->value();
+    Settings::values.tex_scale_mode = ui->tex_scale_mode->currentIndex();
+    Settings::values.tex_scale_factor = ui->tex_scale_factor->value();
+    Settings::values.tex_scale_depos = ui->tex_scale_depos->isChecked();
+    Settings::values.tex_dump = ui->tex_dump->isChecked();
+    Settings::values.tex_dump_dir = ui->tex_dump_dir->text().toStdString();
+    Settings::values.tex_load = ui->tex_load->isChecked();
+    Settings::values.tex_load_dir = ui->tex_load_dir->text().toStdString();
     Settings::Apply();
 }
 

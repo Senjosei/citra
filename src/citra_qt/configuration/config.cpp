@@ -84,6 +84,15 @@ void Config::ReadValues() {
     Settings::values.bg_red = qt_config->value("bg_red", 0.0).toFloat();
     Settings::values.bg_green = qt_config->value("bg_green", 0.0).toFloat();
     Settings::values.bg_blue = qt_config->value("bg_blue", 0.0).toFloat();
+
+    Settings::values.tex_cache_size = qt_config->value("tex_cache_size", 100).toInt();
+    Settings::values.tex_scale_mode = qt_config->value("tex_scale_mode", 0).toInt();
+    Settings::values.tex_scale_factor = qt_config->value("tex_scale_factor", 1).toInt();
+    Settings::values.tex_scale_depos = qt_config->value("tex_scale_depos", false).toBool();
+    Settings::values.tex_dump = qt_config->value("tex_dump", false).toBool();
+    Settings::values.tex_dump_dir = qt_config->value("tex_dump_dir", "").toString().toStdString();
+    Settings::values.tex_load = qt_config->value("tex_load", false).toBool();
+    Settings::values.tex_load_dir = qt_config->value("tex_load_dir", "").toString().toStdString();
     qt_config->endGroup();
 
     qt_config->beginGroup("Layout");
@@ -250,6 +259,15 @@ void Config::SaveValues() {
     qt_config->setValue("bg_red", (double)Settings::values.bg_red);
     qt_config->setValue("bg_green", (double)Settings::values.bg_green);
     qt_config->setValue("bg_blue", (double)Settings::values.bg_blue);
+
+    qt_config->setValue("tex_cache_size", Settings::values.tex_cache_size);
+    qt_config->setValue("tex_scale_mode", Settings::values.tex_scale_mode);
+    qt_config->setValue("tex_scale_factor", Settings::values.tex_scale_factor);
+    qt_config->setValue("tex_scale_depos", Settings::values.tex_scale_depos);
+    qt_config->setValue("tex_dump", Settings::values.tex_dump);
+    qt_config->setValue("tex_dump_dir", QString::fromStdString(Settings::values.tex_dump_dir));
+    qt_config->setValue("tex_load", Settings::values.tex_load);
+    qt_config->setValue("tex_load_dir", QString::fromStdString(Settings::values.tex_load_dir));
     qt_config->endGroup();
 
     qt_config->beginGroup("Layout");
